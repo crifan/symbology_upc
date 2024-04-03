@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xml:id="ch03_printing"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<title>Printing Considerations</title>
+<abstract></abstract>
+
+<sect1><title>Dimensions</title>
+    <para>UPC-A Bar code symbols can be printed at various densities to accommodate a variety of printing and scanning processes. </para>
+    <para>The significant dimensional parameter is called <emphasis>X-dimension</emphasis>, the ideal width of single module element. The X-dimension has to be constant in UPC-A symbol. The width of each bar (dark bar) and space (light bar) is determined by multiplying the X-dimension by the module width of each dark bar or light bar (1,2,3, or 4).</para>
+    <para>The X-dimension for the UPC-A at the nominal size is <emphasis>0.33 mm</emphasis> (0.013 in.). UPC-A can be reduced or magnified in the range of 80% to 200%.</para>
+    <para>Nominal symbol height for UPC-A is <emphasis>25.9 mm</emphasis> (1.0 in.). In UPC-A the dark bars forming the left, centre, and right Guard Bar Patterns are extended downwards by 5 times X-dimension. This also applies to the bars of the first and the last symbol characters of UPC-A symbol. See illustration.</para>
+</sect1>
+
+<sect1><title>Quiet Zone (Light Margin)</title>
+    <para>The minimum Quiet Zone width required by the UPC-A bar code symbol is 9 x X-dimension on both the left and right sides. UPC-E requires 9 X-dimension units on the left side and 7 on the right. (Source; UPC Symbol Specification Manual).</para>
+</sect1>
+
+<sect1><title>Barcode Text</title>
+    <para>Exactly 12 digits must be printed below the UPC-A barcode.</para>
+</sect1>
+
+</chapter>

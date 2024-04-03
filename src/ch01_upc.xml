@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xml:id="ch01_upc"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<title>Plessey</title>
+<abstract></abstract>
+
+<sect1><title>Barcode Basic Knowledge</title>
+    <orderedlist>
+        <listitem><emphasis>Bar</emphasis>
+            <para>bit 1, the vertical black line, called black bar or bar or dark bar.</para>
+        </listitem>
+        <listitem><emphasis>Space</emphasis>
+            <para>bit 0, the vertical white line/space area, called white space or space or light space</para>
+        </listitem>
+    </orderedlist>
+</sect1>
+
+<sect1><title>What is UPC</title>
+    <para>The UPC is <emphasis>Universal Product Code</emphasis>, is a barcode symbology.</para>
+    <para>The UPC is called, <emphasis>UPC-A</emphasis>.</para>
+</sect1>
+
+<sect1><title>Application Field</title>
+    <para>UPC is widely used in Canada and the United States for <emphasis>tracking trade items in stores</emphasis></para>
+</sect1>
+
+<sect1><title>Example</title>
+    <figure id="fg.upc_barcode_format"><title>UPC Barcode Format</title>
+        <mediaobject>
+            <imageobject role="html">
+                <imagedata fileref="images/upc_barcode_format.png" align="left" scalefit="0" width="100%" />
+            </imageobject>
+            <imageobject role="fo">
+                <imagedata fileref="images/upc_barcode_format.png" align="center" scalefit="1" width="100%" />
+            </imageobject>
+        </mediaobject>
+    </figure>
+</sect1>
+
+<sect1><title>Technical Detail</title>
+    <para>The UPC has only numerals (digital number), without letters (such as ‘A’, ‘B’,… ) or other (control / function ) characters.</para>
+    <para>Total 12 decimal digits, its format/syntax is:</para>
+    <para>S<emphasis>L</emphasis>LLLLLMRRRRR<emphasis>R</emphasis>E</para>
+    <para>In which:</para>
+    <orderedlist>
+        <listitem><emphasis>S – Start, E – End</emphasis>
+            <para>fixed bit pattern 101</para>
+        </listitem>
+        <listitem><emphasis>M – Middle</emphasis>
+            <para>fixed bit pattern 01010, called guard bars</para>
+        </listitem>
+        <listitem><emphasis>L – Left, R - Right</emphasis>
+            <para>both have 6 digits, each digit is a 7 bits code</para>
+        </listitem>
+    </orderedlist>
+    <para>So, total bits = S + L + M + R +E = 3 + 7 * 6 + 5 + 7 * 6 + 3 = 95 bits</para>
+    <para>Since S, M, and E all include two bars, and each of the 12 digits of the UPC-A barcode consists of two bars and two spaces, all UPC-A barcodes consist of exactly (3 × 2) + (12 × 2) = 30 bars.</para>
+    <para>For left digits and right digits:</para>
+    <para>The first digit <emphasis>L</emphasis> is the <emphasis>prefix</emphasis>.</para>
+    <para>The last digit <emphasis>R</emphasis> is an error correcting <emphasis>check digit</emphasis>, allowing some errors in scanning or manual entry to be detected.</para>
+    <para>UPC data structures are a component of GTINs (Global Trade Item Numbers). All of these data structures follow the global GS1 standards.</para>
+    
+    <sect2><title>Bit Pattern of Digit</title>
+        <para>The bar-and-space patterns for each digit 0–9 are as follows:</para>
+        <informaltable>
+            <tgroup cols="4" >
+                <thead>
+                    <row><entry>Digit</entry><entry>L Pattern</entry><entry>R Pattern</entry><entry>Widths</entry></row>
+                </thead>
+                <tbody>
+                    <row><entry>0</entry><entry>0001101</entry><entry>1110010</entry><entry>3211</entry></row>
+                    <row><entry>1</entry><entry>0011001</entry><entry>1100110</entry><entry>2221</entry></row>
+                    <row><entry>2</entry><entry>0010011</entry><entry>1101100</entry><entry>2122</entry></row>
+                    <row><entry>3</entry><entry>0111101</entry><entry>1000010</entry><entry>1411</entry></row>
+                    <row><entry>4</entry><entry>0100011</entry><entry>1011100</entry><entry>1132</entry></row>
+                    <row><entry>5</entry><entry>0110001</entry><entry>1001110</entry><entry>1231</entry></row>
+                    <row><entry>6</entry><entry>0101111</entry><entry>1010000</entry><entry>1114</entry></row>
+                    <row><entry>7</entry><entry>0111011</entry><entry>1000100</entry><entry>1312</entry></row>
+                    <row><entry>8</entry><entry>0110111</entry><entry>1001000</entry><entry>1213</entry></row>
+                    <row><entry>9</entry><entry>0001011</entry><entry>1110100</entry><entry>3112</entry></row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        <para>bit pattern for each numeral is designed to be as little like the others as possible, and to have no more than four consecutive 1s or 0s in order -> more easy to read and recognize it.</para>
+        
+        <sect3><title>Mirrored Bit Pattern Design</title>
+            <para>Numbers on the right side of the middle guard bars are optically the inverse of the numbers to the left. In other words, while a number on the left side of the UPC will be made up of black bars and white spaces, the same number on the right side would be indicated by the inverse (what was black on the left is now white and what was white is now black).</para>
+            <para>In the illustration above, the "4" digit (shown in detail) is 1011100 (bar × 1, space × 1, bar × 3, space × 2). If the "4" digit were on the left hand side it would be 0100011 (space × 1, bar × 1, space × 3, bar × 2). </para>
+            <para>This inversion enables the bar code to be scanned from left-to-right or right-to-left. Left-side digits consist of an even number of white space bits and an odd number of black bars. Right side digits are the opposite. Using this difference, the scanning software knows if it read the code the correct way or upside down.</para>
+        </sect3>
+    </sect2>
+    
+    <sect2><title>Check Digit Calculation</title>
+        <para>In the UPC-A system, the check digit is calculated as follows:</para>
+        <orderedlist>
+            <listitem>Add the digits in the odd-numbered positions (first, third, fifth, etc.) together and multiply by three. </listitem>
+            <listitem>Add the digits in the even-numbered positions (second, fourth, sixth, etc.) to the result. </listitem>
+            <listitem>Find the result modulo 10 (i.e. the remainder when divided by 10.. 10 goes into 58 5 times with 8 leftover).</listitem>
+            <listitem>If the result is not zero, subtract the result from ten.</listitem>
+        </orderedlist>
+        <para>For example, a UPC-A barcode (in this case, a UPC for a box of tissues) 03600029145X" where X is the check digit, X can be calculated by</para>
+        <orderedlist>
+            <listitem>adding the odd-numbered digits (0 + 6 + 0 + 2 + 1 + 5 = 14), multiplying by three (14 × 3 = 42),</listitem>
+            <listitem>adding the even-numbered digits (42 + (3 + 0 + 0 + 9 + 4) = 58), </listitem>
+            <listitem>calculating modulo ten (58 mod 10 = 8), </listitem>
+            <listitem>subtracting from ten (10 - 8 = 2). </listitem>
+        </orderedlist>
+        <para>The check digit is thus 2.</para>
+        <para>This should not be confused with the real numeral "X" which stands for a value of 10 in modulo 11.</para>
+    </sect2>
+
+    
+    <sect2><title>Prefixes</title>
+        <informaltable>
+            <tgroup cols="2">
+                <colspec colnum="1" colname="col1" colwidth="2*" />
+                <colspec colnum="2" colname="col2" colwidth="8*" />
+                
+                <thead>
+                    <row><entry>Prefix Value</entry><entry>Usage/ Application Field</entry></row>
+                </thead>
+                
+                <tbody>
+                    <row><entry>0<superscript><xref linkend="pref_zero" /></superscript>, 1, 6, 7, 8</entry><entry>For most products</entry></row>
+                    <row><entry>2</entry><entry>Reserved for local use (store/warehouse), for items sold by variable weight. Variable-weight items, such as meats and fresh fruits and vegetables, are assigned a UPC by the store, if they are packaged there. In this case, the LLLLL is the item number, and the RRRRR is either the weight or the price, with the first R determining which. </entry></row>
+                    <row><entry>3</entry><entry>Drugs, by National Drug Code number. Pharmaceuticals in the U.S. have the remainder of the UPC as their National Drug Code (NDC) number; though usually only over-the-counter drugs are scanned at point-of-sale, NDC-based UPCs are used on prescription drug packages as well for inventory purposes</entry></row>
+                    <row><entry>4</entry><entry>Reserved for local use (store/warehouse), often for loyalty cards or store coupons</entry></row>
+                    <row><entry>5</entry><entry>Coupons, The Manufacturer code is the LLLLL, the first 3 RRR are a family code (set by manufacturer), and the next 2 RR are a coupon code. This 2-digit code determines the amount of the discount, according to a table set by the GS1 US, with the final R being the check digit. These coupons can be doubled or tripled</entry></row>
+                    <row><entry>9</entry><entry>Coupons, The Manufacturer code is the LLLLL, the first 3 RRR are a family code (set by manufacturer), and the next 2 RR are a coupon code. This 2-digit code determines the amount of the discount, according to a table set by the GS1 US, with the final R being the check digit. These coupons CANNOT be doubled or tripled</entry></row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+        <note>
+            <orderedlist>
+                <listitem id="pref_zero" xreflabel="[1]">By prefixing these with a 0, they become <emphasis>EAN-13</emphasis> rather than UPC-A. This does not change the check digit. All point-of-sale systems can now understand both equally.</listitem>
+            </orderedlist>
+        </note>
+    </sect2>
+</sect1>
+
+</chapter>

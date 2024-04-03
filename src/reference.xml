@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<bibliography xmlns="http://docbook.org/ns/docbook"
+    xml:id="reference"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<bibliomixed id="ref.wiki_upc">
+  <bibliosource><ulink url="http://en.wikipedia.org/wiki/Universal_Product_Code">Universal Product Code</ulink></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_ean">
+  <bibliosource><ulink url="http://en.wikipedia.org/wiki/EAN-13">European Article Number</ulink></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+<bibliomixed id="ref.wiki_ean8">
+  <bibliosource><ulink url="http://en.wikipedia.org/wiki/EAN_8">EAN 8</ulink></bibliosource>
+  <author>wiki</author>
+</bibliomixed>
+
+</bibliography>

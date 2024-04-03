@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xml:id="ch04_ean"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<title>EAN &amp; IAN, EAN-13 &amp; JAN, GTIN, EAN-8, EAN2 &amp; EAN5</title>
+<abstract></abstract>
+
+<sect1><title>EAN, IAN</title>
+    <para>EAN means "European Article Number", but now renamed IAN (International Article Number) even though the abbreviation has been retained.</para>
+    <para>The EAN was developed as a <emphasis>superset of UPC</emphasis>, <emphasis>adding an extra digit to the beginning</emphasis> so that there would be plenty of numbers for the entire world.</para>
+</sect1>
+
+<sect1><title>EAN-13, JAN</title>
+    <para>An EAN-13 barcode is a 13 digit (12 + check digit) barcoding standard which is a superset of the original 12-digit UPC (Universal Product Code) system developed in the United States.</para>
+    <para>The EAN-13 barcode is defined by the standards organisation GS1.</para>
+    <para>The EAN-13 barcodes are used worldwide for marking products often sold at retail point of sale.</para>
+    <para>The numbers encoded in EAN-13 bar codes are product identification numbers, which are also called Japanese Article Number (JAN) in Japan. </para>
+</sect1>
+
+<sect1><title>GTIN</title>
+    <para>All the numbers encoded in UPC and EAN barcodes are known as Global Trade Item Numbers (GTIN), and they can be encoded in other GS1 barcodes.</para>
+</sect1>
+
+<sect1><title>EAN-8</title>
+    <para>An EAN-8 is a barcode and is derived from the longer European Article Number (EAN-13) code. It was introduced for use on small packages where an EAN-13 barcode would be too large; for example on cigarettes, pencils (though it is rarely used for pencils), and chewing gum packets.</para>
+    <para>EAN-8 barcodes may be used to encode GTIN-8s which are another set of product identifiers from the GS1 System. </para>
+    <para>It begins with a 2- or 3-digit GS1 prefix (which is assigned to each national GS1 authority) 5- or 4-digit item reference element depending on the length of the GS1 prefix), and a checksum digit.</para>
+    <para>EAN-8 codes are common throughout the world, and companies may also use them to encode RCN-8s (8-digit Restricted Circulation Numbers) used to identify own-brand products sold only in their stores. These are formatted as 0xxx xxxx or 2xxx xxxx.</para>
+</sect1>
+
+<sect1><title>EAN2 &amp; EAN5</title>
+    <para>2-digit (EAN 2) and 5-digit (EAN 5) supplemental barcodes may be added for a total of 14 or 17 data digits. These are generally used for periodicals (to indicate the serial number), or books and weighted products like food (to indicate the selling price), respectively.</para>
+</sect1>
+
+<sect1><title>Relation between UPC EAN GS1 GTIN</title>
+    <para>The relation between UPC, EAN, GS1, GTIN, can be illustrated by following figure:</para>
+    <figure id="fg.relation_upc_ean_gs1_gtin"><title>Relation between UPC EAN GS1 GTIN</title>
+        <mediaobject>
+            <imageobject role="html">
+                <imagedata fileref="images/relation_upc_ean_gs1_gtin.png" align="left" scalefit="0" width="100%" />
+            </imageobject>
+            <imageobject role="fo">
+                <imagedata fileref="images/relation_upc_ean_gs1_gtin.png" align="center" scalefit="1" width="100%" />
+            </imageobject>
+        </mediaobject>
+    </figure>
+</sect1>
+
+</chapter>

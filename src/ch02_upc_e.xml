@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<!DOCTYPE chapter
+[
+
+<!ENTITY % crl_ent PUBLIC "crl.ent" 'http://www.crifan.com/files/res/docbook/entity/crl.ent'>
+%crl_ent;
+
+]>
+
+<chapter xmlns="http://docbook.org/ns/docbook"
+    xml:id="ch02_upc_e"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<title>Zero-Compressed UPC &rArr; UPC-E</title>
+<abstract></abstract>
+
+<para>To allow the use of UPC barcodes on smaller packages where a full 12-digit barcode may not fit, a 'zero-compressed' version of UPC was developed called UPC-E. </para>
+<para>This symbology differs from UPC-A in that it only uses a 6-digit code, does not use middle guard bars, and the end bit pattern (E) becomes 010101. </para>
+<para>The way in which a 6-digit UPC-E relates to a 12-digit UPC-A is determined by the last (right-hand most) digit. With the manufacturer code represented by X's, and product code by N's then:</para>
+<informaltable>
+    <tgroup cols="3">
+        <colspec colnum="1" colname="col1" colwidth="1*" />
+        <colspec colnum="2" colname="col2" colwidth="2*" />
+        <colspec colnum="3" colname="col3" colwidth="4*" />
+        
+        <thead>
+            <row><entry>Last digit</entry><entry>UPC-E equivalent is</entry><entry>UPC-A equivalent is</entry></row>
+        </thead>
+        
+        <tbody>
+            <row><entry>0</entry><entry>XXNNN0</entry><entry>0XX000-00NNN + check</entry></row>
+            <row><entry>1</entry><entry>XXNNN1</entry><entry>0XX100-00NNN + check</entry></row>
+            <row><entry>2</entry><entry>XXNNN2</entry><entry>0XX200-00NNN + check</entry></row>
+            <row><entry>3</entry><entry>XXXNN3</entry><entry>0XXX00-000NN + check</entry></row>
+            <row><entry>4</entry><entry>XXXXN4</entry><entry>0XXXX0-0000N + check</entry></row>
+            <row><entry>5</entry><entry>XXXXX5</entry><entry>0XXXXX-00005 + check</entry></row>
+            <row><entry>6</entry><entry>XXXXX6</entry><entry>0XXXXX-00006 + check</entry></row>
+            <row><entry>7</entry><entry>XXXXX7</entry><entry>0XXXXX-00007 + check</entry></row>
+            <row><entry>8</entry><entry>XXXXX8</entry><entry>0XXXXX-00008 + check</entry></row>
+            <row><entry>9</entry><entry>XXXXX9</entry><entry>0XXXXX-00009 + check</entry></row>
+        </tbody>
+    </tgroup>
+</informaltable>
+<para>For example a UPC-E barcode with the number 654321 would expand to the UPC-A 065100004327. You can convert UPC-E back to UPC-A using this web utility.</para>
+<para>UPC-E check digits are calculated using this expanded string in the same way as used by UPC-A. The resulting check digit is not added to the barcode, however, but is encoded by manipulating the parity of the six digits which are present in the UPC-E - as shown in the following tables:</para>
+<informaltable>
+    <tgroup cols="2">
+        <colspec colnum="1" colname="col1" colwidth="1*" />
+        <colspec colnum="2" colname="col2" colwidth="1*" />
+        
+        <thead>
+            <row><entry>Check digit</entry><entry>Parity pattern</entry></row>
+        </thead>
+        
+        <tbody>
+            <row><entry>0</entry><entry>EEEOOO</entry></row>
+            <row><entry>1</entry><entry>EEOEOO</entry></row>
+            <row><entry>2</entry><entry>EEOOEO</entry></row>
+            <row><entry>3</entry><entry>EEOOOE</entry></row>
+            <row><entry>4</entry><entry>EOEEOO</entry></row>
+            <row><entry>5</entry><entry>EOOEEO</entry></row>
+            <row><entry>6</entry><entry>EOOOEE</entry></row>
+            <row><entry>7</entry><entry>EOEOEO</entry></row>
+            <row><entry>8</entry><entry>EOEOOE</entry></row>
+            <row><entry>9</entry><entry>EOOEOE</entry></row>
+        </tbody>
+    </tgroup>
+</informaltable>
+<para></para>
+<informaltable>
+    <tgroup cols="3">
+        <colspec colnum="1" colname="col1" colwidth="1*" />
+        <colspec colnum="2" colname="col2" colwidth="2*" />
+        <colspec colnum="3" colname="col3" colwidth="4*" />
+        
+        <thead>
+            <row><entry>Digit to be encoded</entry><entry>Odd parity pattern</entry><entry>Even parity pattern</entry></row>
+        </thead>
+        
+        <tbody>
+            <row><entry>0</entry><entry>3-2-1-1</entry><entry>1-1-2-3</entry></row>
+            <row><entry>1</entry><entry>2-2-2-1</entry><entry>1-2-2-2</entry></row>
+            <row><entry>2</entry><entry>2-1-2-2</entry><entry>2-2-1-2</entry></row>
+            <row><entry>3</entry><entry>1-4-1-1</entry><entry>1-1-4-1</entry></row>
+            <row><entry>4</entry><entry>1-1-3-2</entry><entry>2-3-1-1</entry></row>
+            <row><entry>5</entry><entry>1-2-3-1</entry><entry>1-3-2-1</entry></row>
+            <row><entry>6</entry><entry>1-1-1-4</entry><entry>4-1-1-1</entry></row>
+            <row><entry>7</entry><entry>1-3-1-2</entry><entry>2-1-3-1</entry></row>
+            <row><entry>8</entry><entry>1-2-1-3</entry><entry>3-1-2-1</entry></row>
+            <row><entry>9</entry><entry>3-1-1-2</entry><entry>2-1-1-3</entry></row>
+        </tbody>
+    </tgroup>
+</informaltable>
+<para>Our example code 654321, therefore, would become 1-1-1 4-1-1-1 1-2-3-1 2-3-1-1 1-4-1-1 2-2-1-2 2-2-2-1 1-1-1-1-1-1. The resulting barcode would look roughly like this:</para>
+<figure id="fg.upc_654321"><title>MSI exapmle 01234567 mode 10</title>
+    <mediaobject>
+        <imageobject role="html">
+            <imagedata fileref="images/upc_654321.jpg" align="left" scalefit="0" width="100%" />
+        </imageobject>
+        <imageobject role="fo">
+            <imagedata fileref="images/upc_654321.jpg" align="center" scalefit="1" width="50%" />
+        </imageobject>
+    </mediaobject>
+</figure>
+
+</chapter>
